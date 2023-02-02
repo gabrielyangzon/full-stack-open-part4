@@ -16,6 +16,19 @@ blogRouter.get("/" , ( require, response , next ) => {
 
 })
 
+/// get blog by id
+blogRouter.get("/:id" , ( require, response , next ) => {
+  Blog
+   .findById(request.params.id)
+   .then(blogs => {
+      if(blogs){
+       response.status(200).json(blogs)
+      }else{
+       response.status(404).json("user not found")
+      }
+    }).catch(error => next(error))
+
+})
 
 /// add blog
 blogRouter.post('/' ,( request ,response , next ) => {

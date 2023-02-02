@@ -10,7 +10,10 @@ mongoose.connect(config.MONGODB_URL)
   .catch((error) => logger.error(error))
     
 const blogSchema = new mongoose.Schema({
-    title: String,
+    title: {
+      type: String,
+      required: true
+    },
     author: String,
     url: String,
     likes: Number
