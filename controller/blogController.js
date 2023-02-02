@@ -1,5 +1,6 @@
 const blogRouter = require('express').Router()
 
+const blog = require('../models/blog')
 const Blog = require('../models/blog')
 
 
@@ -45,6 +46,24 @@ blogRouter.post('/' ,( request ,response , next ) => {
       response.status(401).send('something wrong happened')
     }
   }).catch(error => next(error))
+})
+
+
+///delete blog
+blogRouter.delete('/:id', (request, response,next) => {
+
+  const idToDelete = request.params.id
+
+  Blog.findByIdAndDelete(idToDelete).then((result) => {
+    console.log(result)
+    if(result){
+      response.status(200).send(`blog deleted ${result.name}`)
+    }
+    else{
+      response.status(400).send('Error while deleting blog')
+    }
+  }).catch(error => next(error))
+
 })
 
 
