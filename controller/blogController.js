@@ -19,7 +19,7 @@ blogRouter.get("/" , ( require, response , next ) => {
 /// get blog by id
 blogRouter.get("/:id" , ( require, response , next ) => {
   Blog
-   .findById(request.params.id)
+   .findById(require.params.id)
    .then(blogs => {
       if(blogs){
        response.status(200).json(blogs)

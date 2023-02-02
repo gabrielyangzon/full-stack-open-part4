@@ -1,6 +1,10 @@
 GET http://localhost:3003/api/blogs
 
 
+### 
+GET http://localhost:3003/api/blogs/5a422a851b54a676234d17f7
+
+
 ###
 POST http://localhost:3003/api/blogs
 Content-Type: application/json
@@ -12,4 +16,5 @@ Content-Type: application/json
     "likes": 10
 
 }
+
 
