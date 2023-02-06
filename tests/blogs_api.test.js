@@ -8,10 +8,13 @@ const helper = require('./helper_blogs_api.test')
 
 beforeEach(async () => {
   await Blog.deleteMany({})
-  let blogObject = new Blog(helper.initialBlogs[0])
-  await blogObject.save()
-  blogObject = new Blog(helper.initialBlogs[1])
-  await blogObject.save()
+  
+   for(let blog of helper.initialBlogs){
+        
+        const newBlog = new Blog(blog)
+        await newBlog.save()
+  
+   }
 })
 
 
@@ -101,6 +104,31 @@ test('a specific blog can be viewed' , async () => {
 
       
       expect(resultBlog.body).toEqual(blogToView)
+})
+
+
+test("a blog can be deleted" , async () => {
+
+    const blogAtStart = await helper.blogsInDb()
+
+    const blogToDelete = blogAtStart[0]
+
+    await api
+      .delete(`/api/blogs/${blogToDelete.id}`)
+      .expect(204)
+
+  
+    const blogsAfterDelete = await helper.blogsInDb()
+
+    expect(blogsAfterDelete).toHaveLength(
+        helper.initialBlogs.length - 1
+    )
+
+
+    const contents = blogsAfterDelete.map(r => r.title)
+
+    expect(contents).not.toContain(blogsAfterDelete.title)
+
 })
 
 afterAll(async () => {

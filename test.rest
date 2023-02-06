@@ -2,7 +2,7 @@ GET http://localhost:3003/api/blogs
 
 
 ### 
-GET http://localhost:3003/api/blogs/5a422a851b54a676234d17f7
+GET http://localhost:3003/api/blogs/63d9a2fa604ddc5caa69ff18
 
 
 ###
@@ -10,11 +10,12 @@ POST http://localhost:3003/api/blogs
 Content-Type: application/json
 
 {
-    "title": "String1",
-    "author": "String2",
-    "url": "String3",
+    "title": "String12",
+    "author": "String23",
+    "url": "String4",
     "likes": 10
 
 }
 
-
+###
+DELETE http://localhost:3003/api/blogs/63ddbb8deafd84d72a7fa317

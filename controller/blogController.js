@@ -1,69 +1,60 @@
 const blogRouter = require('express').Router()
-
-const blog = require('../models/blog')
 const Blog = require('../models/blog')
 
 
-blogRouter.get("/" , ( require, response , next ) => {
-  Blog
+blogRouter.get("/" , async ( require, response , next ) => {
+  const blogs = await Blog
    .find({})
-   .then(blogs => {
-      if(blogs){
+
+    if(blogs){
        response.status(200).json(blogs)
       }else{
        response.status(404).end()
       }
-    }).catch(error => next(error))
 
 })
 
 /// get blog by id
-blogRouter.get("/:id" , ( require, response , next ) => {
-  Blog
+blogRouter.get("/:id" , async ( require, response , next ) => {
+ const resultBlog = await Blog
    .findById(require.params.id)
-   .then(blogs => {
-      if(blogs){
-       response.status(200).json(blogs)
+
+
+  if(resultBlog){
+       response.status(200).json(resultBlog)
       }else{
        response.status(404).json("user not found")
       }
-    }).catch(error => next(error))
+
+ 
 
 })
 
 /// add blog
-blogRouter.post('/' ,( request ,response , next ) => {
+blogRouter.post('/' , async ( request ,response , next ) => {
 
   const blog = new Blog(request.body)
 
-  blog
+  const savedBlog =  await  blog
    .save()
-   .then(result => {
-   
-    if(result){
-      response.status(201).json(result)
+    if(savedBlog){
+      response.status(201).json(savedBlog)
     }else{
       response.status(401).send('something wrong happened')
     }
-  }).catch(error => next(error))
+
 })
 
 
 ///delete blog
-blogRouter.delete('/:id', (request, response,next) => {
+blogRouter.delete('/:id', async (request, response,next) => {
 
-  const idToDelete = request.params.id
+   const idToDelete = request.params.id
 
-  Blog.findByIdAndDelete(idToDelete).then((result) => {
-    console.log(result)
-    if(result){
-      response.status(200).send(`blog deleted ${result.name}`)
-    }
-    else{
-      response.status(400).send('Error while deleting blog')
-    }
-  }).catch(error => next(error))
+   await Blog.findByIdAndDelete(idToDelete)
 
+   response.status(204).end(`blog deleted `)
+   
 })
 
 
