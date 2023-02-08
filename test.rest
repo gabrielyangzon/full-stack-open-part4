@@ -13,9 +13,22 @@ Content-Type: application/json
     "title": "String12",
     "author": "String23",
     "url": "String4",
-    "likes": 10
+    "likes": 22
 
 }
 
 ###
 DELETE http://localhost:3003/api/blogs/63ddbb8deafd84d72a7fa317
+
+
+###
+PUT http://localhost:3003/api/blogs/63e2159a724b14654e86913a 
+Content-Type: application/json
+
+{
+    "id": "63e2159a724b14654e86913a",
+    "title": "String12",
+    "author": "String23",
+    "url": "String4",
+    "likes": 25   
+}

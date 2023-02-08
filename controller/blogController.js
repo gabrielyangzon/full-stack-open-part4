@@ -2,7 +2,7 @@ const blogRouter = require('express').Router()
 const Blog = require('../models/blog')
 
 
-blogRouter.get("/" , async ( require, response , next ) => {
+blogRouter.get("/" , async ( require, response) => {
   const blogs = await Blog
    .find({})
 
@@ -15,7 +15,7 @@ blogRouter.get("/" , async ( require, response , next ) => {
 })
 
 /// get blog by id
-blogRouter.get("/:id" , async ( require, response , next ) => {
+blogRouter.get("/:id" , async ( require, response  ) => {
  const resultBlog = await Blog
    .findById(require.params.id)
 
@@ -31,7 +31,7 @@ blogRouter.get("/:id" , async ( require, response , next ) => {
 })
 
 /// add blog
-blogRouter.post('/' , async ( request ,response , next ) => {
+blogRouter.post('/' , async ( request ,response ) => {
 
   const blog = new Blog(request.body)
 
@@ -47,7 +47,7 @@ blogRouter.post('/' , async ( request ,response , next ) => {
 
 
 ///delete blog
-blogRouter.delete('/:id', async (request, response,next) => {
+blogRouter.delete('/:id', async (request, response) => {
 
    const idToDelete = request.params.id
 
@@ -57,6 +57,22 @@ blogRouter.delete('/:id', async (request, response,next) => {
    
 })
 
+
+
+/// edit blog
+blogRouter.put('/:id' , async (request , response) => {
+    const blogId = request.params.id
+
+    const {id, ...blogToEdit } = request.body 
+
+    console.log(blogToEdit)
+   const result = await Blog
+     .findByIdAndUpdate(blogId , blogToEdit ,
+      { new : true , runValidators : true , context : 'query' })
+     
+      response.status(200).send({ message : result })
+     
+})
 
 
 module.exports = blogRouter
