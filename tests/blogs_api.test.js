@@ -182,18 +182,20 @@ describe("blog can be modified" , () => {
 
   const blogsInStart = await helper.blogsInDb()
 
-  const { id, ...blogToEdit } = blogsInStart[0]
+  const blogToEdit = blogsInStart[0]
   blogToEdit.likes = 100
 
   const blogToEditId = blogsInStart[0].id
-
-  await api
-      .put(`/api/blogs/${blogToEditId}` , blogToEdit)
+  
+  const result = await api
+      .put(`/api/blogs/${blogToEditId}` )
+      .send(blogToEdit)
       .expect(200)
+
 
     const blogsAfterEdit = await helper.blogsInDb()
    
-     console.log(blogsAfterEdit[0])
+    console.log(blogsAfterEdit[0])
 
     expect(blogsAfterEdit[0].likes).toEqual(100)
 

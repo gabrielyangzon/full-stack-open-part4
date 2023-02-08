@@ -65,7 +65,7 @@ blogRouter.put('/:id' , async (request , response) => {
 
     const {id, ...blogToEdit } = request.body 
 
-    console.log(blogToEdit)
+   
    const result = await Blog
      .findByIdAndUpdate(blogId , blogToEdit ,
       { new : true , runValidators : true , context : 'query' })
