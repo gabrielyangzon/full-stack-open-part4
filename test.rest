@@ -13,12 +13,13 @@ Content-Type: application/json
     "title": "String12",
     "author": "String23",
     "url": "String4",
-    "likes": 22
+    "likes": 22,
+    "user": "63e5d52cb9fe5524826dd73e"
 
 }
 
 ###
-DELETE http://localhost:3003/api/blogs/63ddbb8deafd84d72a7fa317
+DELETE http://localhost:3003/api/blogs/63e2e71b3e518f7b6c735303
 
 
 ###
@@ -30,5 +31,5 @@ Content-Type: application/json
     "title": "String12",
     "author": "String23",
     "url": "String4",
-    "likes": 35   
+    "likes": 38   
 }

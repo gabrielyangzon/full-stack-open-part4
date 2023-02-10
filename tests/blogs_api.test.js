@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const supertest = require('supertest')
-const { response } = require('../app')
+
 const app = require('../app')
 const api = supertest(app)
 const Blog = require('../models/blog')
@@ -100,7 +100,7 @@ test('a blog witout title is not added' , async () => {
 
 describe("if blog can be viewed" , () => {
 
-test('a specific blog can be viewed' , async () => {
+ test('a specific blog can be viewed' , async () => {
 
     const blogAtStart = await helper.blogsInDb()
 
@@ -115,7 +115,7 @@ test('a specific blog can be viewed' , async () => {
 
      
       expect(resultBlog.body).toEqual(blogToView)
-})
+ })
 
 
 })

@@ -1,14 +1,5 @@
 const mongoose = require('mongoose')
-const config = require('../utils/config')
-const logger = require('../utils/logger')
-
 mongoose.set('strictQuery', false)
-
-logger.info("connecting to mongodb..")
-mongoose.connect(config.MONGODB_URL)
-  .then(() => logger.info('connected to mongo db'))
-  .catch((error) => logger.error(error))
-    
 const blogSchema = new mongoose.Schema({
     title: {
       type: String,
@@ -19,7 +10,8 @@ const blogSchema = new mongoose.Schema({
     likes: {
       type : Number,
       required : true
-    }
+    },
+    user : String
 })
 
 blogSchema.set('toJSON', {
