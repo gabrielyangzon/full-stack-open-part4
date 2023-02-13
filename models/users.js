@@ -5,10 +5,14 @@ const userSchema = new mongoose.Schema({
     username : {
         type : String,
         unique : true,
-        required : true
+        required : true,
+        minLength : 3
     },
     name : String ,
-    password : String,
+    password : {
+        type : String ,
+        minLength: 3
+    },
     blogs: [
         {
             type : mongoose.Schema.Types.ObjectId,

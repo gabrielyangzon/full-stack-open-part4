@@ -1,0 +1,43 @@
+GET http://localhost:3003/api/blogs
+
+
+### 
+GET http://localhost:3003/api/blogs/63d9a2fa604ddc5caa69ff18
+
+
+###
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImdnZ2ciLCJpZCI6IjYzZTlkYmRiODg1NWNiMzc5ZjM1NDQ5ZSIsImlhdCI6MTY3NjI3NzExMiwiZXhwIjoxNjc2MjgwNzEyfQ.fASvL7UCmZyAZ1qEnpH6MWCrlE4n63I0Tul7F4t9VI0
+
+{
+    "title": "myblog",
+    "author": "myblog",
+    "url": "ggg",
+    "likes": 22,
+    "user": "63e9dbdb8855cb379f35449e"
+
+}
+
+###
+DELETE http://localhost:3003/api/blogs/63e9feafa04c80ee7cc5f8bd
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImdnZ2ciLCJpZCI6IjYzZTlkYmRiODg1NWNiMzc5ZjM1NDQ5ZSIsImlhdCI6MTY3NjI3NzExMiwiZXhwIjoxNjc2MjgwNzEyfQ.fASvL7UCmZyAZ1qEnpH6MWCrlE4n63I0Tul7F4t9VI0
+
+###
+PUT http://localhost:3003/api/blogs/63e2159a724b14654e86913a 
+Content-Type: application/json
+
+{
+    "id": "63e2159a724b14654e86913a",
+    "title": "String12",
+    "author": "String23",
+    "url": "String4",
+    "likes": 38   
+}
+
+###
+
+POST http://localhost:3003/api/blogs/test
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImdnZ2ciLCJpZCI6IjYzZTlkYmRiODg1NWNiMzc5ZjM1NDQ5ZSIsImlhdCI6MTY3NjI3NzExMiwiZXhwIjoxNjc2MjgwNzEyfQ.fASvL7UCmZyAZ1qEnpH6MWCrlE4n63I0Tul7F4t9VI0
+

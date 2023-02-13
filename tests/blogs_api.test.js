@@ -75,7 +75,7 @@ describe("testing blog addition" , () => {
 
 
 
-test('a blog witout title is not added' , async () => {
+test('a blog without title is not added' , async () => {
     const newBlog = {     
       "author": "String2",
       "url": "String3",
