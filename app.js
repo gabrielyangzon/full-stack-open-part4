@@ -30,8 +30,13 @@ mongoose.connect(config.MONGODB_URL)
   .then(() => logger.info('connected to mongo db'))
   .catch((error) => logger.error(error))
 
+
+
 app.use(middleware.tokenExtractor)
 app.use(middleware.userExtractor)
+
+
+
 //api for blogs
 app.use('/api/blogs', blogRouter)
 
@@ -45,5 +50,6 @@ app.use('/api/login' , loginRouter)
 
 app.use(middleware.unknownEndPoint)
 app.use(middleware.errorHandler)
+
 
 module.exports = app
